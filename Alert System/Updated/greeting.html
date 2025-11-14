@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Working Hour Alert</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <div class="background"></div>
+  <header class="main-heading">
+    <h1 id="greeting">Welcome!</h1>
+    <button id="logoutBtn" class="create-btn" style="width:auto;padding:6px 15px;margin-top:10px;">Logout</button>
+  </header>
+
+  <main class="form-container" style="text-align:center;margin-top:140px;">
+    <h2>📊 Dashboard Overview</h2>
+    <p>This is your main dashboard. You can track your timecard, hours, and alerts here.</p>
+  </main>
+
+  <script>
+    // ===== Dashboard Greeting and Logout =====
+    const loggedEmail = localStorage.getItem("loggedInUser");
+    if (!loggedEmail) {
+      window.location.href = "index.html";
+    }
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(u => u.email === loggedEmail);
+    const greeting = document.getElementById("greeting");
+    if (user) {
+      greeting.textContent = `Welcome, ${user.firstName}!`;
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

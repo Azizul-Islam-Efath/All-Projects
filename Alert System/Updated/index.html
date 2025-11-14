@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Working Hour Alert System</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <div class="background"></div>
+
+  <header class="main-heading">
+    <h1>Working Hour Alert System</h1>
+  </header>
+
+  <div class="form-container">
+    <div class="tabs">
+      <button id="signup-tab" class="active">Sign up</button>
+      <button id="signin-tab">Sign in</button>
+    </div>
+
+    <!-- Sign Up Form -->
+    <form id="signup-form" class="active">
+      <h2 class="create">Create an Account</h2>
+      <div class="input-group">
+        <input type="text" id="firstName" placeholder="First Name" required />
+        <input type="text" id="lastName" placeholder="Last Name" required />
+      </div>
+      <div class="input-single">
+        <input type="email" id="signupEmail" placeholder="Enter your email" required />
+      </div>
+      <div class="input-single">
+        <input type="password" id="signupPassword" placeholder="Enter your password" required />
+      </div>
+      <div class="input-single phone">
+        <span class="flag">BD</span>
+        <input type="tel" placeholder="+880" />
+      </div>
+      <button type="submit" class="create-btn">Create Account</button>
+      <p class="terms">By creating an account, you agree to our <a href="#">Terms & Service</a>.</p>
+    </form>
+
+    <!-- Sign In Form -->
+    <form id="signin-form">
+      <h2 class="create">Welcome Back</h2>
+      <div class="input-single">
+        <input type="email" id="signinEmail" placeholder="Enter your email" required />
+      </div>
+      <div class="input-single">
+        <input type="password" id="signinPassword" placeholder="Enter your password" required />
+      </div>
+      <button type="submit" class="create-btn">Sign in</button>
+      <p class="terms">Forgot your password? <a href="#">Reset it</a>.</p>
+      <p id="errorMsg" class="error-msg"></p>
+    </form>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
