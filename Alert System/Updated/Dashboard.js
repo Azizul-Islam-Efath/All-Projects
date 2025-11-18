@@ -131,8 +131,8 @@ punchInBtn.addEventListener("click", () => {
   allPunches[selectedDate].punchIn = formatTime(now);
   allPunches[selectedDate].punchOut = "--:--";
   allPunches[selectedDate].worked = "0h 0m";
-  allPunches[selectedDate].expected = formatTime(addMinutes(now, 8.5 * 60));
-  allPunches[selectedDate].breach = formatTime(addMinutes(now, 10 * 60));
+  allPunches[selectedDate].expected = formatTime(addMinutes(now, 9 * 60));
+  allPunches[selectedDate].breach = formatTime(addMinutes(now, 9 * 60));
   saveData();
   renderDayData();
 });
@@ -188,3 +188,4 @@ themeToggle.addEventListener("click", () => {
 // Load theme on startup
 const savedTheme = localStorage.getItem("theme") || "dark";
 setTheme(savedTheme);
+
