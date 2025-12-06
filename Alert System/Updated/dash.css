@@ -17,11 +17,11 @@ body {
 
 /* THEMES */
 body.dark {
-  background: radial-gradient(circle at top, #0d1b2a, #000814);
+  background: linear-gradient(120deg, #2f302d, #3d5771);
   color: #e4e4e4;
 }
 body.light {
-  background: linear-gradient(120deg, #f9fafb, #dde3e9);
+  background: linear-gradient(120deg, #969790, #79abdd);
   color: #222;
 }
 
@@ -36,7 +36,7 @@ body.light {
   transition: background 0.4s;
 }
 body.light .container {
-  background: #fff;
+  background: #dddbd8;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -68,13 +68,13 @@ header p {
 .live-clock {
   font-size: 18px;
   font-weight: 600;
-  color: #00ffe1;
-  text-shadow: 0 0 10px #00ffe1;
-  animation: glow 2s infinite ease-in-out;
+  color: #8eacdf;
+  text-shadow: 0 0 10px #c8c3e8;
+  animation: glow 1s infinite ease-in-out;
 }
 @keyframes glow {
-  0%, 100% { text-shadow: 0 0 10px #00ffe1; }
-  50% { text-shadow: 0 0 25px #00ffe1; }
+  0%, 100% { text-shadow:0 0 10px #c8c3e8; }
+  50% { text-shadow: 0 0 10px #c8c3e8; }
 }
 .theme-btn {
   background: #007bff;
@@ -96,14 +96,14 @@ header p {
   margin-bottom: 20px;
 }
 .date-section input {
-  background: #1a2435;
+  background: #496ca9;
   border: none;
   color: #fff;
   border-radius: 8px;
   padding: 6px 10px;
 }
 body.light .date-section input {
-  background: #f1f1f1;
+  background: #aea7a7;
   color: #000;
 }
 
@@ -160,15 +160,18 @@ button {
   transition: 0.3s;
 }
 #logoutBtn {
-  display: block;
+
+  display: flex;
   margin: 20px auto; /* centers horizontally */
-  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
-button:hover { background: #00aaff; }
+button:hover { background: #9dcae8; }
 .reset-btn {
-  background: #e74c3c;
+  background: #f32f19;
   margin-top: 15px;
+  margin-bottom: 20px;
 }
 .reset-btn:hover { background: #526ba1; }
 
@@ -191,7 +194,7 @@ th, td {
 }
 th {
   background: #0b1929;
-  color: #00ffe1;
+  color: #2c8eac;
 }
 body.light th {
   background: #f0f0f0;
@@ -202,14 +205,14 @@ body.light tr:hover { background: #f3f8ff; }
 .week-total {
   text-align: right;
   margin-top: 10px;
-  color: #00ffe1;
+  color: #a0b1e0;
 }
 body.light .week-total { color: #007bff; }
 
 /* CHART */
 .chart-section canvas {
   width: 100% !important;
-  height: 300px !important;
+  height: 400px !important;
 }
 
 /* RESPONSIVE */
