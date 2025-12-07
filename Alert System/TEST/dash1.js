@@ -161,7 +161,7 @@ if (workedMins >= ALERT_THRESHOLD_MINS && workedMins < PENALTY_BREACH_MINS && !a
         setTimeout(() => {
             alarm.pause();
             alarm.currentTime = 0;
-        }, 300000); // stop after 2 seconds
+        }, 600000); // stop after 2 seconds
     });
 
     alertTriggered = true;
