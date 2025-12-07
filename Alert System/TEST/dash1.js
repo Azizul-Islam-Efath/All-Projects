@@ -119,7 +119,7 @@ function saveData() {
 // ===== NEW ALERT & AUTO-UPDATE LOGIC =====
 let alertTriggered = false;
 const PENALTY_BREACH_MINS = 10 * 60; // 10 hours
-const ALERT_THRESHOLD_MINS = 10; // 9 hours 30 minutes                     *************************
+const ALERT_THRESHOLD_MINS = 2; // 9 hours 30 minutes                     *************************
 
 function updateCurrentWorkAndCheckAlert() {
   const today = getTodayISO();
