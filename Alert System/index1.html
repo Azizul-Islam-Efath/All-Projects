@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timecard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+  <link rel="stylesheet" href="index1.css" />
+</head>
+<body>
+
+  <header class="main-heading">
+    <h1>TIMECARD</h1>
+  </header>
+
+  <div class="form-container">
+    <div class="tabs">
+      <button id="signin-tab" class="active">Sign in</button>
+      <button id="signup-tab">Sign up</button>
+    </div>
+
+    <!-- Sign In Form -->
+    <form id="signin-form" class="active">
+      <h2 class="create">Welcome Back</h2>
+      <div class="input-single">
+        <input type="email" id="signinEmail" placeholder="Enter your email" required />
+      </div>
+      <div class="input-single">
+        <input type="password" id="signinPassword" placeholder="Enter your password" required />
+      </div>
+      <button type="submit" class="create-btn">Sign in</button>
+      <p class="terms">Forgot your password? <a href="#">Reset it</a>.</p>
+      <p id="errorMsg" class="error-msg"></p>
+    </form>
+
+    <!-- Sign Up Form -->
+    <form id="signup-form">
+      <h2 class="create">Create an Account</h2>
+      <div class="input-group">
+        <input type="text" id="firstName" placeholder="First Name" required />
+        <input type="text" id="lastName" placeholder="Last Name" required />
+      </div>
+      <div class="input-single">
+        <input type="email" id="signupEmail" placeholder="Enter your email" required />
+      </div>
+      <div class="input-single">
+        <input type="password" id="signupPassword" placeholder="Enter your password" required />
+      </div>
+      <button type="submit" class="create-btn">Create Account</button>
+      <p class="terms">By creating an account, you agree to our <a href="#">Terms & Service</a>.</p>
+    </form>
+  </div>
+
+  <script src="index1.js"></script>
+</body>
+</html>
