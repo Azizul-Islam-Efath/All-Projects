@@ -1,4 +1,4 @@
-// ===== ELEMENTS =====
+
 const liveClock = document.getElementById("liveClock");
 const datePicker = document.getElementById("datePicker");
 const currentDateLabel = document.getElementById("currentDate");
@@ -14,38 +14,47 @@ const resetBtn = document.getElementById("resetBtn");
 const weekTotal = document.getElementById("weekTotal");
 const themeToggle = document.getElementById("themeToggle");
 
-// ===== UTILITIES =====
+
 const formatTime = (date) => {
   let h = date.getHours();
   let m = date.getMinutes().toString().padStart(2, "0");
   const ampm = h >= 12 ? "PM" : "AM";
-  h = h % 12 || 12;
+
+if (h % 12 === 0) {
+  h = 12;
+} else {
+  h = h % 12;
+}
   return `${h}:${m} ${ampm}`;
 };
+
 const addMinutes = (date, mins) => new Date(date.getTime() + mins * 60000);
 const getTodayISO = () => new Date().toISOString().split("T")[0];
 const timeToDate = (timeStr) => {
   if (!timeStr || timeStr === "--:--") return null;
+  
   const [h, m, ap] = timeStr.match(/(\d+):(\d+) (\w+)/).slice(1);
   const date = new Date();
   let hours = +h;
-  if (ap === "PM" && hours < 12) hours += 12;
-  else if (ap === "AM" && hours === 12) hours = 0; // Midnight case
+  if (ap === "PM" && hours < 12) 
+    hours += 12;
+  else if (ap === "AM" && hours === 12) 
+    hours = 0; 
   date.setHours(hours, +m, 0, 0);
   return date;
 };
 
-// ===== STORAGE =====
+
 let allPunches = JSON.parse(localStorage.getItem("allPunches")) || {};
 let selectedDate = getTodayISO();
-let workingInterval = null; // Used for the auto-update and alert check
+let workingInterval = null;
 
-// ===== LIVE CLOCK =====
+
 setInterval(() => {
   liveClock.textContent = formatTime(new Date());
 }, 1000);
 
-// ===== RENDER FUNCTIONS & LOGIC =====
+
 function renderDate() {
   const d = new Date(selectedDate);
   datePicker.value = selectedDate;
@@ -70,7 +79,7 @@ function renderDayData() {
   expectedOut.textContent = data?.expected || "--:--";
   maxBreach.textContent = data?.breach || "--:--";
 
-  // Start interval only for today's date if punched in and not punched out
+
   if (selectedDate === getTodayISO() && data?.punchIn && !data.punchOut || data?.punchOut === "--:--") {
     if (!workingInterval) {
       workingInterval = setInterval(updateCurrentWorkAndCheckAlert, 1000);
@@ -116,9 +125,9 @@ function saveData() {
   renderWeeklyTable();
 }
 
-// ===== NEW ALERT & AUTO-UPDATE LOGIC =====
+
 let alertTriggered = false;
-const PENALTY_BREACH_MINS = 10 * 60; // 10 hours
+const PENALTY_BREACH_MINS = 10 * 60;
 const ALERT_THRESHOLD_MINS = 1; // 9 hours 30 minutes                     *************************
 
 function updateCurrentWorkAndCheckAlert() {
@@ -130,7 +139,7 @@ function updateCurrentWorkAndCheckAlert() {
     const now = new Date();
     const workedMins = Math.floor((now - inDate) / 60000);
     
-    // Update worked time display
+    
     const hours = Math.floor(workedMins / 60);
     const minutes = workedMins % 60;
     record.worked = `${hours}h ${minutes}m`;
@@ -141,35 +150,31 @@ if (workedMins >= ALERT_THRESHOLD_MINS && workedMins < PENALTY_BREACH_MINS && !a
     const alarm = document.getElementById("alarmSound");
     alarm.currentTime = 0;
 
-    // Try playing the sound
+    
     alarm.play().then(() => {
-        // Sound started successfully — now show alert
         alert("⚠️ You have only 30 minutes left before breaching the 10-hour penalty threshold!");
-
-        // STOP sound when OK is clicked
-        alarm.pause();
+        alarm.pause();    
         alarm.currentTime = 0;
 
     }).catch(err => {
         console.log("Autoplay blocked, trying again after alert:", err);
 
-        // ALERT FIRST (user interaction unlocks sound)
+
         alert("⚠️ You have only 30 minutes left before breaching the 10-hour penalty threshold!");
 
-        // NOW sound can play
+
         alarm.play();
         setTimeout(() => {
             alarm.pause();
             alarm.currentTime = 0;
-        }, 20000); // stop after 2 seconds
+        }, 20000); 
     });
 
     alertTriggered = true;
 }   else if (workedMins < ALERT_THRESHOLD_MINS) {
-      alertTriggered = false; // Reset if time goes back (e.g., for testing or time zone changes)
+      alertTriggered = false;
     }
 
-    // Optional: Auto-save the current worked time (can be heavy, saved locally only)
     allPunches[today] = record; 
     localStorage.setItem("allPunches", JSON.stringify(allPunches));
 
@@ -180,12 +185,12 @@ if (workedMins >= ALERT_THRESHOLD_MINS && workedMins < PENALTY_BREACH_MINS && !a
   }
 }
 
-// ===== INIT =====
+
 renderDate();
 renderDayData();
 renderWeeklyTable();
 
-// ===== EVENTS =====
+
 datePicker.addEventListener("change", () => {
   selectedDate = datePicker.value;
   renderDate();
@@ -201,14 +206,14 @@ punchInBtn.addEventListener("click", () => {
   allPunches[selectedDate].expected = formatTime(addMinutes(now, 8 * 60));
   allPunches[selectedDate].breach = formatTime(addMinutes(now, 10 * 60));
   saveData();
-  renderDayData(); // This will also trigger the update interval
+  renderDayData(); 
 });
 
 punchOutBtn.addEventListener("click", () => {
   const now = new Date();
   const record = allPunches[selectedDate];
   
-  clearInterval(workingInterval); // Stop the auto-update/alert interval
+  clearInterval(workingInterval); 
   workingInterval = null;
   alertTriggered = false;
 
@@ -218,7 +223,6 @@ punchOutBtn.addEventListener("click", () => {
   }
   record.punchOut = formatTime(now);
 
-  // Calculate worked time using utility function
   record.worked = calculateWorkedTime(record.punchIn, record.punchOut);
   
   saveData();
@@ -236,13 +240,11 @@ resetBtn.addEventListener("click", () => {
   }
 });
 
-// ======Log Out Section =====
 document.getElementById("logoutBtn").addEventListener("click", () => {
       localStorage.removeItem("loggedInUser");
       window.location.href = "index1.html";
     });
 
-// ===== THEME TOGGLE =====
 function setTheme(mode) {
   document.body.className = mode;
   localStorage.setItem("theme", mode);
@@ -254,10 +256,7 @@ themeToggle.addEventListener("click", () => {
   setTheme(newMode);
 });
 
-
-// Load theme on startup
 const savedTheme = localStorage.getItem("theme") || "dark";
 setTheme(savedTheme);
 
-// Initial check to start the interval if already punched in
 renderDayData();

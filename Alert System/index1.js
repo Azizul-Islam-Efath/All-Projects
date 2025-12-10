@@ -1,16 +1,14 @@
-// ===== Tabs Toggle =====
+
 const signupTab = document.getElementById("signup-tab");
 const signinTab = document.getElementById("signin-tab");
 const signupForm = document.getElementById("signup-form");
 const signinForm = document.getElementById("signin-form");
 const errorMsg = document.getElementById("errorMsg");
 
-// Redirect if already logged in
 if (localStorage.getItem("loggedInUser")) {
   window.location.href = "dash1.html";
 }
 
-// Toggle between Sign Up / Sign In
 signupTab.addEventListener("click", () => {
   signupTab.classList.add("active");
   signinTab.classList.remove("active");
@@ -25,7 +23,6 @@ signinTab.addEventListener("click", () => {
   signupForm.classList.remove("active");
 });
 
-// ===== SIGN UP =====
 signupForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -52,7 +49,8 @@ signupForm.addEventListener("submit", (e) => {
   window.location.href = "dash1.html";
 });
 
-// ===== SIGN IN =====
+
+
 signinForm.addEventListener("submit", (e) => {
   e.preventDefault();
 

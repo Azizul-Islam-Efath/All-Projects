@@ -96,7 +96,7 @@ header p {
   50% { text-shadow: 0 0 10px #c8c3e8; }
 }
 .theme-btn {
-  background: #007bff;
+  background: #033265;
   border: none;
   color: white;
   padding: 6px 12px;
@@ -105,7 +105,7 @@ header p {
   font-weight: 600;
   transition: 0.3s;
 }
-.theme-btn:hover { background: #00aaff; }
+.theme-btn:hover { background: #aecad8; }
 
 /* DATE SECTION */
 .date-section {
@@ -122,7 +122,7 @@ header p {
   padding: 6px 10px;
 }
 body.light .date-section input {
-  background: #aea7a7;
+  background: #e3ecee;
   color: #000;
 }
 
@@ -138,7 +138,7 @@ body.light .date-section input {
 }
 
 /* BOXES */
-.punch-section, .summary-box, .schedule /* Removed .chart-section */ {
+.punch-section, .summary-box, .schedule {
   background: #1e2b3d;
   border: 1px solid #2c3e57;
   border-radius: 10px;
@@ -148,11 +148,11 @@ body.light .date-section input {
 }
 body.light .punch-section,
 body.light .summary-box,
-body.light .schedule /* Removed .chart-section */ {
+body.light .schedule{
   background: #f9fafb;
   border: 1px solid #ddd;
 }
-.punch-section h3, .summary-box h3 /* Removed .chart-section h3 */ {
+.punch-section h3, .summary-box h3{
   color: #2c8eac;
   margin-bottom: 10px;
 }
@@ -168,7 +168,7 @@ body.light .schedule /* Removed .chart-section */ {
 }
 button {
   flex: 1;
-  background: #1366c0;
+  background: #092b4f;
   border: none;
   border-radius: 6px;
   padding: 8px;
@@ -178,7 +178,6 @@ button {
   transition: 0.3s;
 }
 #logoutBtn {
-
   display: flex;
   margin: 20px auto; /* centers horizontally */
   align-items: center;
@@ -187,11 +186,11 @@ button {
 
 button:hover { background: #9dcae8; }
 .reset-btn {
-  background: #f32f19;
+  background: #a15260;
   margin-top: 15px;
   margin-bottom: 20px;
 }
-.reset-btn:hover { background: #526ba1; }
+.reset-btn:hover { background:#a28d91 ; }
 
 /* WEEKLY TABLE */
 .weekly-record {
@@ -218,7 +217,8 @@ body.light th {
   background: #f0f0f0;
   color: #2c8eac;
 }
-body.light tr:hover { background: #e7f4f5; }
+body.light tr:hover { background: #fbf2e1; }
+
 .week-total {
   text-align: right;
   margin-top: 10px;
